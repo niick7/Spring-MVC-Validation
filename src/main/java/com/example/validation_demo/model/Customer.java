@@ -1,5 +1,6 @@
 package com.example.validation_demo.model;
 
+import com.example.validation_demo.validation.CourseCode;
 import jakarta.validation.constraints.*;
 
 public class Customer {
@@ -16,6 +17,10 @@ public class Customer {
 
     @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "Only 5 characters or digits")
     private String postalCode;
+
+    // CourseCode is a custom Java Validation
+    @CourseCode(value="LUV", message="must start with LUV")
+    private String courseCode;
 
     public Customer() {
     }
@@ -52,5 +57,13 @@ public class Customer {
 
     public void setPostalCode(@Pattern(regexp = "^[a-zA-Z0-9]{5}") String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 }
