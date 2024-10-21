@@ -9,6 +9,7 @@ public class Customer {
     @Size(min=1, message = "is required")
     private String lastName;
 
+    @NotNull
     @Min(value=0)
     @Max(value=10)
     private int freePasses;
