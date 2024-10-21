@@ -1,9 +1,6 @@
 package com.example.validation_demo.model;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class Customer {
     private String firstName;
@@ -15,6 +12,9 @@ public class Customer {
     @Min(value=0)
     @Max(value=10)
     private int freePasses;
+
+    @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "Only 5 characters or digits")
+    private String postalCode;
 
     public Customer() {
     }
@@ -43,5 +43,13 @@ public class Customer {
 
     public void setFreePasses(@Min(value = 0) @Max(value = 10) int freePasses) {
         this.freePasses = freePasses;
+    }
+
+    public @Pattern(regexp = "^[a-zA-Z0-9]{5}") String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(@Pattern(regexp = "^[a-zA-Z0-9]{5}") String postalCode) {
+        this.postalCode = postalCode;
     }
 }
