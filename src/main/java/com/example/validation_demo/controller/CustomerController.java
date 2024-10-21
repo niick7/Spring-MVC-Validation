@@ -33,6 +33,10 @@ public class CustomerController {
 
     @PostMapping("/processForm")
     public String processForm(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
+        // Debug for custom error names
+        System.out.println(bindingResult.toString());
+        System.out.println("\n\n\n\n\n");
+
         if (bindingResult.hasErrors()) {
             return "customer-form";
         } else {
